@@ -8,10 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class BasicAuthTest {
 
     @Test
-    public void testGoogleSearch() throws InterruptedException {
+    public void test() throws InterruptedException {
         // Optional, if not specified, WebDriver will search your path for
         // chromedriver.
         System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
@@ -20,11 +20,16 @@ public class AppTest {
         String username = "user"; // username
         String password = "passwd"; // password
         String protectedPage = "https://httpbin.org/basic-auth/user/passwd";
+        String dummy = "https://httpbin.org";
 
         WebDriver driver = new ChromeDriver();
         
         // 認証前ページにアクセス
-        driver.get("https://httpbin.org/");
+        try {
+            driver.get(dummy);
+        } catch (Exception e) {
+    
+        }
         
         // JavaScriptで認証
         JavascriptExecutor jexec = (JavascriptExecutor) driver;
