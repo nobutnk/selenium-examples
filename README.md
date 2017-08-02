@@ -20,3 +20,5 @@ alert.authenticateUsing(new UserAndPassword(username, password));
     
     3. 認証がかかっているページに遷移する。
 
+* ※前提条件：ドメイン内のすべてのページでBasic認証がかかっている場合、この方法は使えない。
+* JavaScriptでリクエストを投げる場合、同一ドメインから投げる必要があるため。ドメイン内のページに遷移後、JavaScriptからリクエストを発行するとう仕組みを使っている。
