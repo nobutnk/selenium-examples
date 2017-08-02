@@ -13,7 +13,10 @@ alert.authenticateUsing(new UserAndPassword(username, password));
 
 * しかし、現状(2017/08/02)はInternetExplorerDriver、かつSelenium-3.4でしか動作していない。
 * そのため、以下のような対処方法となる。 [BasicAuthTest.java](https://github.com/nobutnk/selenium-examples/blob/master/src/test/java/com/nobutnk/selenium/examples/BasicAuthTest.java)
-    * 認証が必要なページと同一ドメインで、認証がかかっていないページに遷移する。※前提条件となる。
-    * JavaScriptのXMLHttpRequestを使い、Basic認証を行う
-    * 認証がかかっているページに遷移する。
+
+    1. 認証が必要なページと同一ドメインで、認証がかかっていないページに遷移する。※前提条件となる。
+    
+    2. JavaScriptのXMLHttpRequestを使い、Basic認証を行う
+    
+    3. 認証がかかっているページに遷移する。
 
