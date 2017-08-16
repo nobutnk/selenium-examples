@@ -5,6 +5,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.security.UserAndPassword;
+
 /**
  * Unit test for simple App.
  */
@@ -20,8 +25,9 @@ public class BasicAuthTest {
         String username = "user"; // username
         String password = "passwd"; // password
         String protectedPage = "https://httpbin.org/basic-auth/user/passwd";
-        String dummy = "https://httpbin.org";
+        String dummy = "http://www.yahoo.co.jp";
 
+        
         WebDriver driver = new ChromeDriver();
         
         // 認証前ページにアクセス
