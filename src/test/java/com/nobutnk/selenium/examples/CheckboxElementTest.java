@@ -15,7 +15,7 @@ import com.nobutnk.selenium.common.WebDriverUtils;
 /**
  * Unit test for simple App.
  */
-public class TextInputTest {
+public class CheckboxElementTest {
 
     @Test
     public void test() throws InterruptedException {
@@ -24,23 +24,20 @@ public class TextInputTest {
         System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 
         // settings
-        String url = "https://www.google.co.jp";
+        String url = "http://html.com/input-type-checkbox/";
 
         WebDriver driver = new ChromeDriver();
 
         driver.get(url);
-        String form1 = "lst-ib";
-        WebDriverUtils.inputText(driver, "Selenium 日本語", By.id(form1));
         
-        WebElement element = driver.findElement(By.id(form1));
-        Assert.assertThat("Selenium 日本語", is(element.getAttribute("value")));
         
-        String button = "input[name='btnK']";
-        WebDriverUtils.click(driver, By.cssSelector(button));
-        
-        String title = driver.getTitle();
-        Assert.assertThat("Selenium 日本語 - Google 検索", is(title));
-        
+        String checkbox1 = "love";
+        WebElement checkbox1Element = driver.findElement(By.id(checkbox1));
+        boolean checkbox1Selected = checkbox1Element.isSelected();
+        Assert.assertThat(false, is(checkbox1Selected));
+        WebDriverUtils.click(driver, By.id(checkbox1));
+        checkbox1Selected = checkbox1Element.isSelected();
+        Assert.assertThat(true, is(checkbox1Selected));
         driver.quit();
     }
 }
