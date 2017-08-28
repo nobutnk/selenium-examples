@@ -64,10 +64,20 @@ public class WebDriverUtils {
         js.executeScript("arguments[0].value=arguments[1]", element, text);
     }
     
+    /**
+     * 要素をclickする
+     * @param driver webdriver
+     * @param by by
+     */
     public static void click(WebDriver driver, By by) {
         click(driver, driver.findElement(by));
     }
     
+    /**
+     * 要素をclickする
+     * @param driver webdriver
+     * @param element WebElement
+     */
     public static void click(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click();", element);
