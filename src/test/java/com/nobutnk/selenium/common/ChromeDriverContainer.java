@@ -59,6 +59,7 @@ public class ChromeDriverContainer {
     public void cleanup() {
         driver.close();
         driver.quit();
+        driver = null;
     }
 
 }
