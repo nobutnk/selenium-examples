@@ -18,8 +18,10 @@ public class ChromeDriverContainer {
     public ChromeDriver getWebDriver() {
         if (driver == null) {
             driver = createChromeDriver();
+            System.out.println("driver is null -> create");
         } else if (driver.toString().contains("(null")) {
             driver = createChromeDriver();
+            System.out.println("driver is closed -> create");
         }
         
         System.out.println(driver.toString());
