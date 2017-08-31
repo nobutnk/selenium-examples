@@ -9,24 +9,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.nobutnk.selenium.common.ChromeWebDriverTestBase;
 import com.nobutnk.selenium.common.WebDriverUtils;
 
 
 /**
  * Unit test for simple App.
  */
-public class RadioTest {
+public class RadioTest extends ChromeWebDriverTestBase {
 
     @Test
     public void test() throws InterruptedException {
-        // Optional, if not specified, WebDriver will search your path for
-        // chromedriver.
-        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 
         // settings
         String url = "https://v4-alpha.getbootstrap.com/components/forms/#textual-inputs";
-
-        WebDriver driver = new ChromeDriver();
 
         driver.get(url);
         String radio1 = "optionsRadios1";

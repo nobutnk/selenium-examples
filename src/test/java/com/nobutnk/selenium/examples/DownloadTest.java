@@ -28,10 +28,10 @@ public class DownloadTest {
         String mainPage = "http://www.nomadworks.co.jp/htmlsample/download.html";
         String download = "http://www.nomadworks.co.jp/htmlsample/archive/win/sec2/info01.zip";
 
-        String downloadFilepath = "/Users/nobutnk/Download";
+        String downloadFilepath = "/tmp";
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-        chromePrefs.put("download.prompt_for_download", true);
-//        chromePrefs.put("download.default_directory", downloadFilepath);
+        chromePrefs.put("download.prompt_for_download", false);
+        chromePrefs.put("download.default_directory", downloadFilepath);
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", chromePrefs);
         DesiredCapabilities cap = DesiredCapabilities.chrome();
