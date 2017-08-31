@@ -4,14 +4,11 @@
 package com.nobutnk.selenium.common;
 
 import java.net.MalformedURLException;
-import java.util.HashMap;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
  * @author nobutnk
@@ -20,7 +17,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class ChromeWebDriverTestBase {
     
     /**
-     * WebDriver
+     * WebDriver 管理コンテナ
+     */
+    protected static ChromeDriverContainer driverContainer = new ChromeDriverContainer();
+    
+    /**
+     * WebDriver 実体
      */
     protected ChromeDriver driver;
     
@@ -34,42 +36,32 @@ public class ChromeWebDriverTestBase {
      */
     @Before
     public void setUp() {
-        if (driver == null) {
-            driver = createChromeDriver();
-        }
-        
-        System.out.println(driver.toString());
+        driver = driverContainer.getWebDriver();
         
         // if you need, login to the top page.
     }
     
     /**
-     * create ChromeDriver
-     * @return chromeDriver
+     * [TestCleanup()]
+     * テストメソッド実行後に毎回呼ばれる
      */
-    private ChromeDriver createChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
-        
-        String downloadFilepath = "/tmp";
-        HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-        chromePrefs.put("download.prompt_for_download", false);
-        chromePrefs.put("download.default_directory", downloadFilepath);
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", chromePrefs);
-        DesiredCapabilities cap = DesiredCapabilities.chrome();
-        cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-        cap.setCapability(ChromeOptions.CAPABILITY, options);
-        ChromeDriver driver = new ChromeDriver(cap);
-        
-        return driver;
-    }
-    
     @After
     public void tearDown() {
-        if (this.driver != null) {
-            driver.close();
-            driver.quit();
-        }
+        // 毎回ブラウザ閉じたい場合
+//        if (this.driver != null) {
+//            driver.close();
+//            driver.quit();
+//        }
+        System.out.println("tearDown");
+        
+    }
+    
+    /**
+     * クラス内の全テスト実行後に呼ばれる
+     */
+    @AfterClass
+    public static void after() {
+        driverContainer.cleanup();
     }
 
 }

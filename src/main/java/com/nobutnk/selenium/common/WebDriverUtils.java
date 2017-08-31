@@ -82,5 +82,9 @@ public class WebDriverUtils {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click();", element);
     }
+    
+    public static void cleanup(WebDriver driver) {
+        driver.quit();
+    }
 
 }
