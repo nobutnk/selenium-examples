@@ -6,6 +6,7 @@ package com.nobutnk.selenium.common;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 
+import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,12 +33,14 @@ public class ChromeWebDriverTestBase {
      * @throws MalformedURLException 
      */
     @Before
-    public void getWebDriver() {
+    public void setUp() {
         if (driver == null) {
             driver = createChromeDriver();
         }
         
         System.out.println(driver.toString());
+        
+        // if you need, login to the top page.
     }
     
     /**
@@ -59,6 +62,14 @@ public class ChromeWebDriverTestBase {
         ChromeDriver driver = new ChromeDriver(cap);
         
         return driver;
+    }
+    
+    @After
+    public void tearDown() {
+        if (this.driver != null) {
+            driver.close();
+            driver.quit();
+        }
     }
 
 }

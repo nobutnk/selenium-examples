@@ -6,6 +6,7 @@ package com.nobutnk.selenium.common;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -29,14 +30,12 @@ public class RemoteWebDriverTestBase {
      * @throws MalformedURLException 
      */
     @Before
-    public RemoteWebDriver getWebDriver() throws MalformedURLException {
+    public void setUp() throws MalformedURLException {
         if (driver == null) {
             driver = createRemoteWebDriver();
         } else if (driver.toString().contains("null")) {
             driver = createRemoteWebDriver();
         }
-        
-        return driver;
     }
     
     private RemoteWebDriver createRemoteWebDriver() throws MalformedURLException {
@@ -44,6 +43,14 @@ public class RemoteWebDriverTestBase {
         RemoteWebDriver driver = new RemoteWebDriver(new URL("http://x.x.x.x:4444/wd/hub"), firefox);
         
         return driver;
+    }
+    
+    @After
+    public void tearDown() {
+        if (this.driver != null) {
+            driver.close();
+            driver.quit();
+        }
     }
 
 }

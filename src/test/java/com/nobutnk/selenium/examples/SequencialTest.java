@@ -35,7 +35,6 @@ public class SequencialTest extends ChromeWebDriverTestBase {
         WebDriverUtils.click(driver, By.id(checkbox1));
         checkbox1Selected = checkbox1Element.isSelected();
         Assert.assertThat(true, is(checkbox1Selected));
-        driver.quit();
     }
     
     @Test
@@ -57,7 +56,6 @@ public class SequencialTest extends ChromeWebDriverTestBase {
         WebElement radio1Element = driver.findElement(By.id(radio1));
         boolean radio1Selected = radio1Element.isSelected();
         Assert.assertThat(false, is(radio1Selected));
-        driver.quit();
     }
     
     @Test
@@ -78,8 +76,6 @@ public class SequencialTest extends ChromeWebDriverTestBase {
         
         String title = driver.getTitle();
         Assert.assertThat("Selenium 日本語 - Google 検索", is(title));
-        
-        driver.quit();
     }
 
 }
