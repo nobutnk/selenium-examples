@@ -26,6 +26,5 @@ public class BasicAuthTest extends ChromeWebDriverTestBase {
 
         String pageSource = driver.getPageSource();
         System.out.println(pageSource);
-        driver.quit();
     }
 }

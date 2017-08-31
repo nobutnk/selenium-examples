@@ -1,13 +1,11 @@
 package com.nobutnk.selenium.examples;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.nobutnk.selenium.common.ChromeWebDriverTestBase;
 import com.nobutnk.selenium.common.WebDriverUtils;
@@ -24,8 +22,6 @@ public class TextInputTest extends ChromeWebDriverTestBase {
         // settings
         String url = "https://www.google.co.jp";
 
-        WebDriver driver = new ChromeDriver();
-
         driver.get(url);
         String form1 = "lst-ib";
         WebDriverUtils.inputText(driver, "Selenium 日本語", By.id(form1));
@@ -38,7 +34,5 @@ public class TextInputTest extends ChromeWebDriverTestBase {
         
         String title = driver.getTitle();
         Assert.assertThat("Selenium 日本語 - Google 検索", is(title));
-        
-        driver.quit();
     }
 }

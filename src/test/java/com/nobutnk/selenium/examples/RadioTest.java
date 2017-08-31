@@ -1,13 +1,11 @@
 package com.nobutnk.selenium.examples;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.nobutnk.selenium.common.ChromeWebDriverTestBase;
 import com.nobutnk.selenium.common.WebDriverUtils;
@@ -37,6 +35,5 @@ public class RadioTest extends ChromeWebDriverTestBase {
         WebElement radio1Element = driver.findElement(By.id(radio1));
         boolean radio1Selected = radio1Element.isSelected();
         Assert.assertThat(false, is(radio1Selected));
-        driver.quit();
     }
 }

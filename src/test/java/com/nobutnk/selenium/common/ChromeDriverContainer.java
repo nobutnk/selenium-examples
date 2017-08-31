@@ -18,6 +18,8 @@ public class ChromeDriverContainer {
     public ChromeDriver getWebDriver() {
         if (driver == null) {
             driver = createChromeDriver();
+        } else if (driver.toString().contains("(null")) {
+            driver = createChromeDriver();
         }
         
         System.out.println(driver.toString());
@@ -55,6 +57,7 @@ public class ChromeDriverContainer {
      * WebDriver終了時に呼ぶ
      */
     public void cleanup() {
+        driver.close();
         driver.quit();
     }
 

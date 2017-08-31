@@ -1,13 +1,11 @@
 package com.nobutnk.selenium.examples;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.nobutnk.selenium.common.ChromeWebDriverTestBase;
 import com.nobutnk.selenium.common.WebDriverUtils;
@@ -34,6 +32,5 @@ public class CheckboxElementTest extends ChromeWebDriverTestBase {
         WebDriverUtils.click(driver, By.id(checkbox1));
         checkbox1Selected = checkbox1Element.isSelected();
         Assert.assertThat(true, is(checkbox1Selected));
-        driver.quit();
     }
 }
